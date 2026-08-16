@@ -30,7 +30,7 @@ a { color: inherit; }
   position: absolute;
   inset: -4%;
   z-index: -4;
-  background: url("/images/rift-space-v3.png") center center / cover no-repeat;
+  background: url("/images/rift-space-v3.jpg") center center / cover no-repeat;
   transform: translate3d(var(--world-x), var(--world-y), 0) scale(1.06);
   transition: transform .55s cubic-bezier(.2,.8,.2,1);
   will-change: transform;

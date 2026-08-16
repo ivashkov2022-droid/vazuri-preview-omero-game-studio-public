@@ -154,7 +154,7 @@ export default function Home() {
 
       <section className="services" id="services">
         <div className="services-art" id="games">
-          <Image src="/images/rift-space-v3.png" alt="Космическая экспедиция Rift" fill sizes="(max-width: 720px) 100vw, 38vw" />
+          <Image src="/images/rift-space-v3.jpg" alt="Космическая экспедиция Rift" fill sizes="(max-width: 720px) 100vw, 38vw" />
           <div className="art-mask" />
           <div className="game-card">
             <small>IN DEVELOPMENT · 2026</small>
