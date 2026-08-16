@@ -1,11 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, PointerEvent as ReactPointerEvent, useEffect, useState } from "react";
+import { FormEvent, PointerEvent as ReactPointerEvent, useEffect, useRef, useState } from "react";
+
+type ModelViewerElement = HTMLElement & { loaded?: boolean };
 
 export default function Home() {
   const [briefOpen, setBriefOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [modelReady, setModelReady] = useState(false);
+  const modelRef = useRef<ModelViewerElement>(null);
 
   useEffect(() => {
     let opened = false;
@@ -26,6 +30,15 @@ export default function Home() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("keydown", onKey);
     };
+  }, []);
+
+  useEffect(() => {
+    const model = modelRef.current;
+    if (!model) return;
+    const markReady = () => setModelReady(true);
+    if (model.loaded) markReady();
+    model.addEventListener("load", markReady);
+    return () => model.removeEventListener("load", markReady);
   }, []);
 
   const openBrief = () => {
@@ -80,8 +93,10 @@ export default function Home() {
         <h1 className="hero-title"><span>Worlds</span><span>begin</span><span>here</span></h1>
         <div className="hero-model-stage">
           <div className="hero-model-glow" aria-hidden="true" />
+          <div className={`model-loader ${modelReady ? "is-ready" : ""}`} aria-hidden="true"><i /><span>Realtime avatar<b>Initializing 3D</b></span></div>
           <model-viewer
-            class="rift-model"
+            ref={modelRef}
+            class={`rift-model ${modelReady ? "is-ready" : ""}`}
             src="/models/rift-explorer-v2.glb"
             alt="Интерактивная 3D-модель исследователя мира Rift"
             loading="eager"
@@ -102,7 +117,7 @@ export default function Home() {
             exposure="1.2"
             tone-mapping="aces"
           />
-          <span className="model-hint"><b>↔</b> Зажмите и вращайте</span>
+          <span className={`model-hint ${modelReady ? "is-ready" : ""}`}><b>↔</b> Зажмите и вращайте</span>
         </div>
         <div className="hero-control">
           <a className="play-button" href="#about"><i>▶</i><span>О студии</span></a>
