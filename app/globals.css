@@ -30,7 +30,7 @@ a { color: inherit; }
   position: absolute;
   inset: -4%;
   z-index: -4;
-  background: url("/images/rift-world-v2.png") center center / cover no-repeat;
+  background: url("/images/rift-space-v3.png") center center / cover no-repeat;
   transform: translate3d(var(--world-x), var(--world-y), 0) scale(1.06);
   transition: transform .55s cubic-bezier(.2,.8,.2,1);
   will-change: transform;
@@ -151,7 +151,7 @@ a { color: inherit; }
 
 .services { position: relative; min-height: 100svh; display: grid; grid-template-columns: .84fr 1.16fr; grid-template-rows: 1fr 76px; background: #111218; }
 .services-art { position: relative; min-height: calc(100svh - 76px); overflow: hidden; }
-.services-art > img { object-fit: cover; object-position: 67% center; }
+.services-art > img { object-fit: cover; object-position: 76% center; filter: saturate(1.08) contrast(1.08); }
 .art-mask { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,14,.08), rgba(8,8,14,.14) 43%, rgba(8,8,14,.93)); }
 .game-card { position: absolute; left: 4vw; right: 3vw; bottom: 48px; }
 .game-card small { color: var(--cyan); font-size: 7px; font-weight: 900; letter-spacing: 2px; }

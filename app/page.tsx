@@ -122,7 +122,7 @@ export default function Home() {
         </div>
         <div className="hero-control">
           <a className="play-button" href="#about"><i>▶</i><span>О студии</span></a>
-          <div className="hero-note"><b>Новая вселенная</b><p>Сюжетная action-RPG<br />для PC и консолей</p></div>
+          <div className="hero-note"><b>Орбитальная миссия</b><p>Narrative sci-fi<br />для PC и консолей</p></div>
         </div>
         <div className="hero-status"><span>RIFT // MOSCOW</span><span>UNREAL ENGINE 5</span><span>BUILD 04.26</span></div>
         <a className="hero-scroll" href="#about" aria-label="Перейти к следующему экрану">↓</a>
@@ -154,22 +154,22 @@ export default function Home() {
 
       <section className="services" id="services">
         <div className="services-art" id="games">
-          <Image src="/images/rift-hero.png" alt="Игровой мир Rift" fill sizes="(max-width: 720px) 100vw, 38vw" />
+          <Image src="/images/rift-space-v3.png" alt="Космическая экспедиция Rift" fill sizes="(max-width: 720px) 100vw, 38vw" />
           <div className="art-mask" />
           <div className="game-card">
             <small>IN DEVELOPMENT · 2026</small>
-            <h3>NULL<br />CITADEL</h3>
-            <p>Action RPG · PC / PS5 / Xbox</p>
-            <a href="#contacts">О проекте ↗</a>
+            <h3>ORBITAL<br />ECHO</h3>
+            <p>Narrative sci-fi · PC / PS5 / Xbox</p>
+            <a href="#contacts">О миссии ↗</a>
           </div>
         </div>
         <div className="services-panel">
           <p className="game-kicker light"><span>✦</span> Что мы делаем</p>
-          <h2>GAME ART &<br /><em>DEVELOPMENT</em></h2>
+          <h2>SPACE ART &<br /><em>DEVELOPMENT</em></h2>
           <div className="service-list">
-            <article><span>01</span><div><h3>Game development</h3><p>Прототип, архитектура, gameplay и production под PC и консоли.</p></div><b>↗</b></article>
-            <article><span>02</span><div><h3>Art direction</h3><p>Визуальный язык, персонажи, окружение и полный 3D-пайплайн.</p></div><b>↗</b></article>
-            <article><span>03</span><div><h3>Animation & VFX</h3><p>Живое движение, эффекты и кинематографичные игровые сцены.</p></div><b>↗</b></article>
+            <article><span>01</span><div><h3>World building</h3><p>Орбитальные станции, планеты и цельная научно-фантастическая вселенная.</p></div><b>↗</b></article>
+            <article><span>02</span><div><h3>Character & tech art</h3><p>Скафандры, техника, материалы и полный realtime 3D-пайплайн.</p></div><b>↗</b></article>
+            <article><span>03</span><div><h3>Cinematics & VFX</h3><p>Невесомость, космический свет, эффекты и сюжетные игровые сцены.</p></div><b>↗</b></article>
           </div>
           <button className="project-button" type="button" onClick={openBrief}>Запустить проект <span>→</span></button>
         </div>

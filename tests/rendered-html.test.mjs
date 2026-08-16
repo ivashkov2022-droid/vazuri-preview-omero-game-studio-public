@@ -22,7 +22,8 @@ test("server-renders the complete RIFT preview", async () => {
   assert.match(html, /<title>RIFT — независимая игровая студия<\/title>/i);
   assert.match(html, /Worlds begin here/i);
   assert.match(html, /СОБИРАЕМ/);
-  assert.match(html, /GAME ART/);
+  assert.match(html, /SPACE ART/);
+  assert.match(html, /ORBITAL/);
   assert.match(html, /Запустить проект/);
   assert.doesNotMatch(html, /Codex|ChatGPT|Your site is taking shape/i);
 });
