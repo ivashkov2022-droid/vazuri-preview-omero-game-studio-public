@@ -99,6 +99,7 @@ export default function Home() {
             class={`rift-model ${modelReady ? "is-ready" : ""}`}
             src="/models/rift-explorer-v2.glb"
             alt="Интерактивная 3D-модель исследователя мира Rift"
+            onPointerUp={(event) => event.currentTarget.blur()}
             loading="eager"
             camera-controls=""
             auto-rotate=""
