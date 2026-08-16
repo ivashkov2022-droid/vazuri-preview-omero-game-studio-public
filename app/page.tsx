@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, PointerEvent as ReactPointerEvent, useEffect, useState } from "react";
 
 export default function Home() {
   const [briefOpen, setBriefOpen] = useState(false);
@@ -38,9 +38,29 @@ export default function Home() {
     setSent(true);
   };
 
+  const moveHero = (event: ReactPointerEvent<HTMLElement>) => {
+    if (event.pointerType === "touch") return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+    event.currentTarget.style.setProperty("--world-x", `${x * -16}px`);
+    event.currentTarget.style.setProperty("--world-y", `${y * -10}px`);
+    event.currentTarget.style.setProperty("--model-x", `${x * 23}px`);
+    event.currentTarget.style.setProperty("--model-y", `${y * 12}px`);
+  };
+
+  const resetHero = (event: ReactPointerEvent<HTMLElement>) => {
+    event.currentTarget.style.setProperty("--world-x", "0px");
+    event.currentTarget.style.setProperty("--world-y", "0px");
+    event.currentTarget.style.setProperty("--model-x", "0px");
+    event.currentTarget.style.setProperty("--model-y", "0px");
+  };
+
   return (
     <main>
-      <section className="game-hero" id="home">
+      <section className="game-hero" id="home" onPointerMove={moveHero} onPointerLeave={resetHero}>
+        <div className="hero-world" aria-hidden="true" />
+        <div className="hero-grid" aria-hidden="true" />
         <div className="hero-vignette" />
         <header className="game-header">
           <a className="game-brand" href="#home" aria-label="Rift — на главную">
@@ -57,8 +77,33 @@ export default function Home() {
           <button className="header-cta" type="button" onClick={openBrief}>Обсудить проект <span>↗</span></button>
         </header>
 
-        <h1 className="sr-only">Worlds begin here — Rift indie game studio</h1>
-        <div className="mobile-title" aria-hidden="true"><span>Worlds</span><span>begin</span><span>here</span></div>
+        <h1 className="hero-title"><span>Worlds</span><span>begin</span><span>here</span></h1>
+        <div className="hero-model-stage">
+          <div className="hero-model-glow" aria-hidden="true" />
+          <model-viewer
+            class="rift-model"
+            src="/models/rift-explorer-v2.glb"
+            alt="Интерактивная 3D-модель исследователя мира Rift"
+            loading="eager"
+            camera-controls=""
+            auto-rotate=""
+            auto-rotate-delay="0"
+            rotation-per-second="14deg"
+            camera-orbit="12deg 78deg 4m"
+            field-of-view="26deg"
+            min-camera-orbit="auto 62deg 4m"
+            max-camera-orbit="auto 94deg 4m"
+            disable-zoom=""
+            disable-pan=""
+            interaction-prompt="none"
+            touch-action="pan-y"
+            shadow-intensity="1.6"
+            shadow-softness=".8"
+            exposure="1.2"
+            tone-mapping="aces"
+          />
+          <span className="model-hint"><b>↔</b> Зажмите и вращайте</span>
+        </div>
         <div className="hero-control">
           <a className="play-button" href="#about"><i>▶</i><span>О студии</span></a>
           <div className="hero-note"><b>Новая вселенная</b><p>Сюжетная action-RPG<br />для PC и консолей</p></div>
@@ -115,7 +160,7 @@ export default function Home() {
         <footer id="contacts">
           <a className="game-brand footer-game-brand" href="#home"><span className="brand-shard">R</span><strong>RIFT</strong><small>indie game studio</small></a>
           <p>hello@rift-studio.ru · +7 495 010-48-48</p>
-          <p>Москва · Нижняя Сыромятническая, 10</p>
+          <p>Москва · Нижняя Сыромятническая, 10 <small className="model-credit">3D: Neil Armstrong Spacesuit · Smithsonian</small></p>
         </footer>
       </section>
 

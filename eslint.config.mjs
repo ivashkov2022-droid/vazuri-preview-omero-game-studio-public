@@ -13,6 +13,7 @@ const eslintConfig = defineConfig([
     "dist/**",
     "out/**",
     "build/**",
+    "public/model-viewer.min.js",
     "next-env.d.ts",
   ]),
   eslint.configs.recommended,
